@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color:#f3ebecfc;
+            color: #c4aeae;
+        }
+        /* Navigation Styles */
+        nav { 
+            background-color: #0e0f0f;
+            padding: 10px 0;
+        }
+        
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight:bold;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: #3498db;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: left;
+            color: #c4aeae;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .rating {
+            display: flex;
+            justify-content: space-between;
+            max-width: 300px;
+            margin: 10px 0;
+        }
+        
+        .rating input {
+            display: none;
+        }
+        
+        .rating label {
+            font-size: 30px;
+            color: #ddd;
+            cursor: pointer;
+        }
+        
+        .rating input:checked ~ label {
+            color: #ffc107;
+        }
+        
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: #ffc107;
+        }
+        
+        button {
+            background-color: #d84568;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .thank-you {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: #e8f5e9;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+      <div class="top-bar">
+        <div>
+          <h1>
+            <img src="Pictures/hair majesty.png" alt="Wig Icon" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+            Glamour Girls Hair Wigs
+          </h1>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="accessories.html">Accessories</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><a href="cart.html">Cart</a></li>
+        </ul>
+    </nav>
+    <div class="hero" id="home">
+        <img src="Pictures/glamourgirlhero.jpg" alt="Hair Majesty Luxury Wigs" style="width:100%; height:auto; max-height:350px; object-fit:cover;">
+        <div class="hero-text">
+        </div>
+      </div>
+    <div class="container">
+        <h1>We Value Your Feedback</h1>
+        
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label for="name">Your Name (optional)</label>
+                <input type="text" id="name" name="name" placeholder="John Doe">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Your Email (optional)</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com">
+            </div>
+            
+            <div class="form-group">
+                <label>How would you rate your experience?</label>
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5">★</label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4">★</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3">★</label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2">★</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1">★</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="feedbackType">Type of Feedback</label>
+                <select id="feedbackType" name="feedbackType">
+                    <option value="general">General Feedback</option>
+                    <option value="bug">Bug Report</option>
+                    <option value="suggestion">Feature Suggestion</option>
+                    <option value="complaint">Complaint</option>
+                    <option value="praise">Praise</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Your Feedback</label>
+                <textarea id="message" name="message" required placeholder="Please share your thoughts with us..."></textarea>
+            </div>
+            
+            <button type="submit">Submit Feedback</button>
+        </form>
+        
+        <div class="thank-you" id="thankYou">
+            <h2>Thank You for Your Feedback!</h2>
+            <p>We appreciate you taking the time to share your thoughts with us. Your feedback helps us improve.</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the data to your server
+            // For demonstration, we'll just show the thank you message
+            
+            document.getElementById('feedbackForm').style.display = 'none';
+            document.getElementById('thankYou').style.display = 'block';
+            
+            // Optional: Reset form after delay
+            setTimeout(function() {
+                document.getElementById('feedbackForm').reset();
+                document.getElementById('feedbackForm').style.display = 'block';
+                document.getElementById('thankYou').style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

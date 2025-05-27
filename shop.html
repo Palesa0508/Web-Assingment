@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Shop - Glamour Girls Hair Wigs</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div>
+                <h1>
+                    <img src="Pictures/hair majesty.png" alt="Wig Icon" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+                    Glamour Girls Hair Wigs
+                </h1>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="about.html">About Us</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="cart.html">Cart</a>
+        
+    </nav>
+
+    <div class="hero" id="home">
+        <img src="Pictures/glamourgirlhero.jpg" alt="Hair Majesty Luxury Wigs" style="width:100%; height:auto; max-height:350px; object-fit:cover;">
+        <div class="hero-text">
+        </div>
+      </div>
+
+    <section id="shop">
+        <h2>Hot Picks</h2>
+        <div class="products">
+            <div class="product-card">
+                <img src="Pictures/RED.jpeg" alt="Brazilian Frontal Wig" width="1000" height="1000">
+                <p class="price">$440.00</p>
+                <h3>Brazilian Frontal 10" Bob Wig</h3>
+                <p>High-quality natural hair.</p>
+                <button onclick="addToCart('Brazilian Frontal Wig', 150)">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Pictures/Pamela.jpeg" alt="Curly Bob Wig" width="1000" height="1000">
+                <p class="price">$1000.00</p>
+                <h3>Curly Bob 12" Wig</h3>
+                <p>Soft, bouncy, and natural.</p>
+                <button onclick="addToCart('Curly Bob Wig', 120)">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="Pictures/Letty.jpeg" alt="Straight Back Wig" width="1000" height="1000">
+                <p class="price">$280.00</p>
+                <h3>Straight Back 18" Wig</h3>
+                <p>Luxurious straight hair.</p>
+                <button onclick="addToCart('Straight Back Wig', 180)">Add to Cart</button>
+            </div>
+        </div>    
+    </section>
+    
+    <footer>
+        <div class="socials">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p>&copy; 2025 Glamour Girls Hair Wigs. All rights reserved.</p>
+    </footer>
+
+    <div id="cart">
+        <button id="close-cart" onclick="toggleCart()">Close</button>
+        <h3>Your Cart</h3>
+        <div id="cart-items"></div>
+        <p><strong>Total: $<span id="cart-total">0.00</span></strong></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

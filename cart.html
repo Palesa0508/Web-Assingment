@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart - Glamour Girls Hair Wigs</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #f3ebecfc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .cart-container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .cart-title {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+    .cart-header {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      padding: 15px 20px;
+      background: #f8f8f8;
+      font-weight: bold;
+      border-bottom: 1px solid #eee;
+    }
+    .cart-item {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      padding: 20px;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+    }
+    .item-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-right: 15px;
+    }
+    .checkout-btn {
+      background-color: #f26a8d;
+      color: white;
+    }
+    .checkout-btn:hover {
+      background-color: #d8456a;
+    }
+    .continue-shopping {
+      background-color: #f26a8d;
+      color: white;
+    }
+    .continue-shopping:hover {
+      background-color: #d8456a;
+      color: white;
+    }
+    @media (max-width: 768px) {
+      .cart-header {
+        display: none;
+      }
+      .cart-item {
+        grid-template-columns: 1fr;
+        grid-gap: 15px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation (Bootstrap-enhanced) -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="Pictures/hair majesty.png" alt="Wig Icon" height="40" class="d-inline-block align-top me-2">
+        Glamour Girls Hair Wigs
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="accessories.html">Accessories</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+          <li class="nav-item">
+            <a class="nav-link position-relative" href="cart.html">
+              Cart <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Image -->
+  <div class="container-fluid p-0">
+    <img src="Pictures/glamourgirlhero.jpg" alt="Hair Majesty Luxury Wigs" class="img-fluid w-100" style="max-height: 350px; object-fit: cover;">
+  </div>
+
+  <!-- Cart Content -->
+  <div class="cart-container">
+    <h1 class="cart-title">Your Shopping Cart</h1>
+    
+    <div id="cart-content">
+      <!-- Cart items will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container text-center">
+      <div class="mb-3">
+        <a href="https://facebook.com" class="text-white mx-2 fs-4"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" class="text-white mx-2 fs-4"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com" class="text-white mx-2 fs-4"><i class="fab fa-twitter"></i></a>
+        <a href="https://tiktok.com" class="text-white mx-2 fs-4"><i class="fab fa-tiktok"></i></a>
+      </div>
+      <p class="mb-0">&copy; 2025 Glamour Girls Hair Wigs. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Cart Functionality -->
+  <script>
+    // Load cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartTotal = parseFloat(localStorage.getItem('cartTotal')) || 0;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderCart();
+      updateCartCount();
+    });
+
+    function renderCart() {
+      const cartContent = document.getElementById('cart-content');
+      
+      if (cart.length === 0) {
+        cartContent.innerHTML = `
+          <div class="text-center py-5 bg-white rounded shadow">
+            <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+            <h2 class="mb-3">Your cart is empty</h2>
+            <p class="mb-4 text-muted">Looks like you haven't added any items to your cart yet.</p>
+            <a href="index.html" class="btn continue-shopping">Continue Shopping</a>
+          </div>
+        `;
+        return;
+      }
+
+      let itemsHTML = `
+        <div class="bg-white rounded shadow overflow-hidden">
+          <div class="cart-header">
+            <div>Product</div>
+            <div>Price</div>
+            <div>Quantity</div>
+            <div>Total</div>
+            <div></div>
+          </div>
+      `;
+
+      cart.forEach((item, index) => {
+        itemsHTML += `
+          <div class="cart-item">
+            <div class="item-info">
+              <img src="${item.image || 'Pictures/hair majesty.png'}" alt="${item.product}" class="item-image">
+              <div>
+                <div class="item-name fw-bold">${item.product}</div>
+                <div class="item-price text-muted">$${item.price.toFixed(2)}</div>
+              </div>
+            </div>
+            <div>$${item.price.toFixed(2)}</div>
+            <div class="quantity-control">
+              <button class="btn btn-outline-secondary" onclick="updateQuantity(${index}, -1)">-</button>
+              <input type="text" class="form-control text-center d-inline-block" style="width: 50px;" value="${item.quantity}" readonly>
+              <button class="btn btn-outline-secondary" onclick="updateQuantity(${index}, 1)">+</button>
+            </div>
+            <div class="fw-bold">$${(item.price * item.quantity).toFixed(2)}</div>
+            <div>
+              <button class="btn text-danger" onclick="removeItem(${index})">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      });
+
+      itemsHTML += `</div>`;
+
+      // Add summary section
+      itemsHTML += `
+        <div class="bg-white rounded shadow p-4 mt-4">
+          <div class="d-flex justify-content-between mb-3">
+            <span>Subtotal</span>
+            <span>$${cartTotal.toFixed(2)}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-3">
+            <span>Shipping</span>
+            <span>Calculated at checkout</span>
+          </div>
+          <div class="d-flex justify-content-between border-top pt-3 mb-4">
+            <span class="fw-bold fs-5">Total</span>
+            <span class="fw-bold fs-5">$${cartTotal.toFixed(2)}</span>
+          </div>
+          <button class="btn checkout-btn w-100 py-3" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+      `;
+
+      cartContent.innerHTML = itemsHTML;
+    }
+
+    function updateQuantity(index, change) {
+      const item = cart[index];
+      const newQuantity = item.quantity + change;
+      
+      if (newQuantity < 1) {
+        removeItem(index);
+        return;
+      }
+      
+      cartTotal -= item.price * item.quantity;
+      item.quantity = newQuantity;
+      cartTotal += item.price * item.quantity;
+      
+      saveCart();
+      renderCart();
+      updateCartCount();
+    }
+
+    function removeItem(index) {
+      const item = cart[index];
+      cartTotal -= item.price * item.quantity;
+      cart.splice(index, 1);
+      
+      saveCart();
+      renderCart();
+      updateCartCount();
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      alert(`Proceeding to checkout with total: $${cartTotal.toFixed(2)}`);
+    }
+
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      localStorage.setItem('cartTotal', cartTotal.toString());
+    }
+
+    function updateCartCount() {
+      const count = cart.reduce((total, item) => total + item.quantity, 0);
+      document.getElementById('cart-count').textContent = count;
+    }
+  </script>
+</body>
+</html>

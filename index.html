@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Glamour Girls Hair Wigs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color:#f3ebecfc;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color:#ad869f00;
+      color: #c4aeae;
+      padding: 10px 30px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav {
+      background-color: #222;
+      padding: 15px 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0 10px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links li {
+      margin: 0 5px;
+    }
+
+    .nav-links a {
+      padding: 15px 20px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: #774949a5;
+    }
+
+    @media screen and (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-links a {
+        font-size: 16px;
+        padding: 10px 14px;
+      }
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1611672585731-878b0f8f36c0?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      text-align: center;
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: contain;
+      object-position: top center;
+      border-radius: 3px;
+    }
+
+    .product-card h3 {
+      margin: 15px 0 10px;
+    }
+
+    .product-card p {
+      margin-bottom: 5px;
+    }
+
+    .product-card button {
+      padding: 10px 20px;
+      background-color: #f26a8d;
+      color: white;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .product-card button:hover {
+      background-color: #d8456a;
+    }
+
+    .three-column {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding: 40px;
+      background-color: #fff;
+    }
+
+    .left-sidebar, .right-sidebar {
+      background-color: #fbe8e8;
+      padding: 20px;
+    }
+
+    .left-sidebar ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 10px;
+      text-align: left;
+    }
+
+    .left-sidebar ul li {
+      margin: 10px 0;
+    }
+
+    .left-sidebar ul li a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .left-sidebar ul li a:hover {
+      color: #c84999;
+    }
+
+    .main-content {
+      text-align: left;
+    }
+
+    @media (min-width: 768px) {
+      .three-column {
+        flex-direction: row;
+      }
+
+      .left-sidebar, .right-sidebar {
+        flex: 1;
+      }
+
+      .main-content {
+        flex: 2;
+      }
+    }
+
+    footer {
+      background-color: #000;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .socials a {
+      color: white;
+      margin: 0 10px;
+      font-size: 24px;
+      text-decoration: none;
+    }
+
+    .socials a:hover {
+      color: #f26a8d;
+    }
+
+    #cart {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 300px;
+      max-height: 400px;
+      overflow-y: auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 1000;
+    }
+
+    #cart h3 {
+      margin-bottom: 10px;
+    }
+
+    #cart-items {
+      text-align: left;
+    }
+
+    #close-cart {
+      background: #f26a8d;
+      border: none;
+      padding: 5px 10px;
+      color: white;
+      float: right;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <div>
+        <h1>
+          <img src="Pictures/hair majesty.png" alt="Wig Icon" style="height: 60px; vertical-align: middle; margin-right: 20px;">
+          Glamour Girls Hair Wigs
+        </h1>
+      </div>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="accessories.html">Accessories</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="cart.html">Cart</a></li>
+      </ul>
+    </div>
+  </nav>
+
+   <!-- Rest of your HTML content remains the same -->
+  <div class="hero" id="home">
+    <img src="Pictures/glamourgirlhero.jpg" alt="Hair Majesty Luxury Wigs" style="width:100%; height:auto; max-height:350px; object-fit:cover;">
+    <div class="hero-text">
+    </div>
+  </div>
+
+  <section class="three-column">
+    <div class="left-sidebar">
+      <h3 style="color: #252525;">Explore More</h3>
+      <ul>
+        <li><a href="#">Why Choose Us?</a></li>
+        <li><a href="#">Wig Care Tips</a></li>
+        <li><a href="#">Customer Reviews</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <h2>Welcome to Glamour Girls Hair Wigs</h2>
+      <p>
+        At Glamour Girls, we specialize in luxury wigs for all styles and personalities. Whether you want sleek straight strands or bold curls, we empower you to look and feel confident.
+      </p>
+      <p>
+        We offer quality wigs, accessories, and tips to help you maintain your crown with pride. Dive into our collection, read our care guides, and explore your beauty.
+      </p>
+    </div>
+
+    <div class="right-sidebar">
+      <h3 style="color: #1b1b1b;">Why Choose Glamour?</h3>
+      <p>
+        Glamour Girls offers top-tier wig collections, personalized customer service, and free care consultations. Our mission is to make every girl feel glamorous and confident.
+      </p>
+    </div>
+  </section>
+
+  <section id="shop">
+    <h2>Shop Our Wigs</h2>
+    <div class="products">
+      <div class="product-card">
+        <img src="Pictures/brazillian.png" alt="Brazilian Frontal Wig" width="1000" height="1000">
+        <p class="price">$440.00</p>
+        <h3>Brazilian Frontal 10" Bob Wig</h3>
+        <p>High-quality natural hair.</p>
+        <button onclick="addToCart('Brazilian Frontal Wig', 150)">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="Pictures/Zeee.jpeg" alt="Curly Bob Wig" width="1000" height="1000">
+        <p class="price">$1000.00</p>
+        <h3>Curly Bob 12" Wig</h3>
+        <p>Soft, bouncy, and natural.</p>
+        <button onclick="addToCart('Curly Bob Wig', 120)">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="Pictures/tlamza.png" alt="Masai Hair Wig" width="1000" height="1000">
+        <p class="price">$280.00</p>
+        <h3>Curly Back 20 inches" Wig</h3>
+        <p>Luxurious straight hair.</p>
+        <button onclick="addToCart('Masai Hair Wig', 180)">Add to Cart</button>
+      </div>
+    </div>
+  
+    <!-- Break between rows -->
+    <div class="products" style="margin-top: 40px;">
+      <div class="product-card">
+        <img src="Pictures/Celeb.png" alt="Straight Back Wig" width="1000" height="1000">
+        <p class="price">$720.00</p>
+        <h3>Straight Back 14 inches" Wig</h3>
+        <p>Cambodian Hair.</p>
+        <button onclick="addToCart('Straight Back Wig', 180)">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="Pictures/cambodia.png" alt="Cambodian Curly Wig" width="1000" height="1000">
+        <p class="price">$360.00</p>
+        <h3>Cambodian 18 inches" Wig</h3>
+        <p>Luxurious straight hair.</p>
+        <button onclick="addToCart('Cambodian Hair Wig', 180)">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="Pictures/Bame.png" alt="Peruvian Hair Wig" width="1000" height="1000">
+        <p class="price">$400.00</p>
+        <h3>Straight Bob 12 inches" Wig</h3>
+        <p>Blonde Curly hair.</p>
+        <button onclick="addToCart('Peruvian Hair Wig', 180)">Add to Cart</button>
+      </div>
+    </div>    
+  </section>
+
+  <footer>
+    <div class="socials">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p>&copy; 2025 Glamour Girls Hair Wigs. All rights reserved.</p>
+  </footer>
+
+  <div id="cart">
+    <button id="close-cart" onclick="toggleCart()">Close</button>
+    <h3>Your Cart</h3>
+    <div id="cart-items"></div>
+    <p><strong>Total: $<span id="cart-total">0.00</span></strong></p>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cartTotal = parseFloat(localStorage.getItem('cartTotal')) || 0;
+  
+    // Initialize cart on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCart();
+    });
+  
+    function addToCart(product, price, image = '') {
+      // Check if product already exists in cart
+      const existingItem = cart.find(item => item.product === product);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ 
+          product, 
+          price, 
+          quantity: 1,
+          image
+        });
+      }
+      
+      cartTotal += price;
+      saveCart();
+      updateCart();
+      
+      // Show a quick notification
+      showNotification(`${product} added to cart!`);
+    }
+  
+    function removeFromCart(index) {
+      const item = cart[index];
+      cartTotal -= item.price * item.quantity;
+      cart.splice(index, 1);
+      saveCart();
+      updateCart();
+    }
+  
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      const cartCount = document.getElementById('cart-count');
+      const cartTotalElement = document.getElementById('cart-total');
+  
+      cartItems.innerHTML = '';
+      
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p>Your cart is empty</p>';
+        cartCount.textContent = '0';
+        cartTotalElement.textContent = '0.00';
+        return;
+      }
+  
+      cart.forEach((item, index) => {
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+          <div class="cart-item-image">
+            ${item.image ? `<img src="${item.image}" alt="${item.product}" style="width:50px;height:50px;object-fit:cover;">` : ''}
+          </div>
+          <div class="cart-item-details">
+            <h4>${item.product}</h4>
+            <p>$${item.price.toFixed(2)} × ${item.quantity}</p>
+            <p>$${(item.price * item.quantity).toFixed(2)}</p>
+          </div>
+          <button class="remove-item" onclick="removeFromCart(${index})">
+            <i class="fas fa-trash"></i>
+          </button>
+        `;
+        cartItems.appendChild(cartItem);
+      });
+  
+      cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+      cartTotalElement.textContent = cartTotal.toFixed(2);
+    }
+  
+    function toggleCart() {
+      const cartDiv = document.getElementById('cart');
+      cartDiv.style.display = cartDiv.style.display === 'none' ? 'block' : 'none';
+    }
+  
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      localStorage.setItem('cartTotal', cartTotal.toString());
+    }
+  
+    function checkout() {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      alert(`Proceeding to checkout with total: $${cartTotal.toFixed(2)}`);
+      // In a real implementation, you would redirect to a checkout page
+    }
+  
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.classList.add('show');
+      }, 10);
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 3000);
+    }
+  
+    function toggleNav() {
+      const nav = document.getElementById("nav-links");
+      nav.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
